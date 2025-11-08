@@ -1,0 +1,138 @@
+{
+	"name": "CopyPipeline_93z",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy_93z",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "project//tip.csv"
+					},
+					{
+						"name": "Destination",
+						"value": "Table1"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings",
+							"skipLineCount": 0
+						}
+					},
+					"sink": {
+						"type": "AzureTableSink",
+						"azureTableInsertType": "merge",
+						"writeBatchSize": 10000
+					},
+					"enableStaging": false,
+					"validateDataConsistency": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "total_bill",
+									"type": "String"
+								},
+								"sink": {
+									"name": "total_bill",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "tip",
+									"type": "String"
+								},
+								"sink": {
+									"name": "tip",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "sex",
+									"type": "String"
+								},
+								"sink": {
+									"name": "sex",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "smoker",
+									"type": "String"
+								},
+								"sink": {
+									"name": "smoker",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "day",
+									"type": "String"
+								},
+								"sink": {
+									"name": "day",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "time",
+									"type": "String"
+								},
+								"sink": {
+									"name": "time",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "size",
+									"type": "String"
+								},
+								"sink": {
+									"name": "size",
+									"type": "String"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "SourceDataset_93z",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DestinationDataset_93z",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": []
+	}
+}
