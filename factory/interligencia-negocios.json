@@ -1,0 +1,9 @@
+{
+	"name": "interligencia-negocios",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "35eddfaa-3983-475a-a424-989056c931cf",
+		"tenantId": "c4a66c34-2bb7-451f-8be1-b2c26a430158"
+	}
+}
